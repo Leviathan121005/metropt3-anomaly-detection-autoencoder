@@ -99,3 +99,43 @@ Maintaining the original class distribution leads to a more realistic evaluation
 The results also highlight that threshold selection is a critical factor. Fixed percentile thresholds are simple but can be unreliable, while validation-based calibration provides more stable performance across different model variants, despite introducing more false positives.
 
 Finally, Conv1D architectures and stochastic variants consistently improve detection performance, suggesting that capturing temporal structure and probabilistic variation in reconstruction plays an important role in distinguishing normal and anomalous behavior.
+
+## Reproducibility
+
+The full pipeline can be reproduced by following these steps in order:
+
+### 1. Environment Setup
+Create a virtual environment and install dependencies:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Obtain Dataset
+Download the MetroPT3 dataset from the [UCI ML Repository](https://archive.ics.uci.edu/dataset/791/metropt+3+dataset) and place the CSV file in `dataset/`. Expected: `dataset/MetroPT3(AirCompressor).csv` (~212.8 MB).
+
+### 3. Data Preprocessing
+Open and run `notebooks/preprocess_data.ipynb`. This generates:
+- Labeled dataset → `dataset/preprocessed/labeled/`
+- Sequential train/val/test splits → `dataset/preprocessed/splits/`
+- Feature distribution plots → `dataset/preprocessed/plots/`
+
+### 4. Windowing
+Open `notebooks/window_data.ipynb`. Set `SPLIT_RUN_NAME` to match the folder created in step 3 (e.g., `20260428_111504`), then run the notebook. Output: `dataset/processed_windows/{timestamp}/` with train/val/test window arrays and metadata.
+
+### 5. Training
+Open `notebooks/train_models.ipynb` and configure:
+- `architecture`: `"dense"` or `"conv1d"` 
+- `sample_from_mu`: `True` or `False`
+- `beta`: KL weight (default: 0.0)
+
+Run the notebook to train and save models → `models/autoencoder/{timestamp}/`.
+
+### 6. Evaluation
+- Run `notebooks/evaluate_models.ipynb` to evaluate each model's metrics and plots on the test set.
+- Run `notebooks/compare_models.ipynb` to obtain model comparison plots.
+
+### Notes:
+- All outputs are timestamped to avoid overwrites.
+- `notebooks/train_models.ipynb` and `notebooks/evaluate_models.ipynb` refers to the latest processed window folder.
