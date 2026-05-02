@@ -1,4 +1,4 @@
-# metropt3-autoencoder-anomaly-detection
+# metropt3-anomaly-detection-autoencoder
 
 This project develops an anomaly detection system on the MetroPT3 air compressor dataset using a one-class autoencoder framework. The model is trained and evaluated on sequential windowed time series data, preserving the original class distribution without artificial rebalancing. The system learns normal operating behavior and identifies deviations as potential failures, achieving a strong F1 score of 0.888 under realistic evaluation settings.
 
