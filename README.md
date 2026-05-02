@@ -52,7 +52,7 @@ Key components and variations:
   
   Anomaly decisions are based on reconstruction error using **p-train (97.5 percentile)** as a default, or **val_f1**, where the threshold is tuned on a validation set.
 
-Training uses Adam (1e-3 learning rate), batch size of 1024, and gradient clipping for stability.
+Training uses Adam (1e-3 learning rate), batch size of 1024, and gradient clipping for stability. Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but with different thresholds for testing.
 
 ---
 
@@ -67,8 +67,7 @@ Training uses Adam (1e-3 learning rate), batch size of 1024, and gradient clippi
 The autoencoder achieves strong performance, with results influenced by both architecture and threshold selection:
 - Conv1D models generally outperform dense variants, indicating that capturing temporal structure within each window improves detection performance. 
 - Stochastic autoencoder models perform well under a fixed 97.5 training percentile threshold, suggesting they are more effective at separating normal and anomalous data by consistently assigning higher reconstruction errors to anomalies.
-- Using a validation set to tune the threshold (**val_f1**) yields almost perfect recall, but lacks precision.
-- A fixed percentile threshold is not robust, as performance differs noticeably between Conv1D models with and without stochastic sampling under this setting. In contrast, both models achieve similar performance under val_f1-tuned thresholds. (**Note:** Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but with different thresholds for testing.)
+- Using a validation set to tune **the threshold (**val_f1**) yields almost perfect recall**, but lacks precision.
 
 ### Isolation Forest metric comparison
 
@@ -86,7 +85,7 @@ This figure shows the reconstruction error distribution alongside the time serie
 - **Conv1D deterministic autoencoder**, best model with val_f1 threshold (F1 0.796)
 - **Isolation forest baseline**, with p-train (97.5 percentile) threshold (F1 0.548)
 
-From the time series plots, lower precision is reflected in a higher number of false positives. The 97.5 training percentile threshold produces fewer false positives in this experiment, but it relies on the assumption that most anomalous behavior lies in the upper tail (97.5–100 percentile) of the training reconstruction error distribution, which may not hold in practice and can therefore be unreliable. In contrast, calibrating the threshold using a validation set is generally more robust, even if it leads to a higher number of false positives.
+From the time series plots, lower precision is reflected in a higher number of false positives. The 97.5 training percentile threshold produces fewer false positives in this experiment, but it relies on the assumption that most anomalous behavior lies in the 2.5% upper tail of the training reconstruction error distribution, which may not hold in practice and can therefore be unreliable. In contrast, **calibrating the threshold using a validation set is more robust**, even if it leads to a higher number of false positives.
 
 ---
 
