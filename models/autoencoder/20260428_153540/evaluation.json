@@ -1,0 +1,40 @@
+{
+  "model_run_name": "20260428_153540",
+  "model_run_path": "models/20260428_153540",
+  "evaluated_at_utc": "2026-04-28 07:38:29.950386+00:00",
+  "data_source": {
+    "source_data_run": "dataset/processed_windows/20260428_112816"
+  },
+  "threshold": 14.91973495483398,
+  "training_metrics": {
+    "accuracy": 0.9749888824504427,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "tn": 72351,
+    "fp": 1856,
+    "fn": 0
+  },
+  "test_metrics": {
+    "accuracy": 0.9423542520703222,
+    "precision": 0.2408320823504182,
+    "recall": 0.6332111643642515,
+    "f1": 0.3489474093063,
+    "tp": 2246,
+    "tn": 134761,
+    "fp": 7080,
+    "fn": 1301,
+    "roc_auc": 0.9537648769619931
+  },
+  "saved_plots": {
+    "reconstruction_error_distribution": "models/20260428_153540/plots/reconstruction_error_distribution.png",
+    "anomaly_timeline_with_fn_density": "models/20260428_153540/plots/anomaly_timeline_with_fn_density.png"
+  },
+  "counts": {
+    "n_test": 145388,
+    "n_actual_anomaly": 3547,
+    "n_predicted_anomaly": 9326,
+    "n_false_negative": 1301
+  }
+}

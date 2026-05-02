@@ -1,0 +1,58 @@
+{
+  "run_id": "20260428_152813",
+  "source_data_run": "dataset/processed_windows/20260428_112816",
+  "vae_config": {
+    "latent_dim": 16,
+    "architecture": "dense",
+    "conv_filters": [
+      32,
+      64
+    ],
+    "kernel_size": 3,
+    "hidden_units": [
+      64,
+      32
+    ],
+    "lstm_units": [
+      64,
+      32
+    ],
+    "encoder_use_batchnorm": false,
+    "encoder_dropout_rate": 0.2
+  },
+  "train_config": {
+    "epochs": 15,
+    "batch_size": 1024,
+    "learning_rate": 0.001,
+    "beta": 0,
+    "sample_from_mu": false,
+    "validation_split": 0,
+    "gradient_clipnorm": 1.0,
+    "random_seed": 42,
+    "verbose_epoch": true
+  },
+  "threshold_config": {
+    "method": "p-train",
+    "percentile": 97.5,
+    "std_factor": 3.0
+  },
+  "threshold": 17.732608413696287,
+  "train_samples": 74207,
+  "train_metrics": {
+    "accuracy": 0.9749888824504427,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "tn": 72351,
+    "fp": 1856,
+    "fn": 0
+  },
+  "saved_files": {
+    "encoder": "models/20260428_152813/encoder.keras",
+    "decoder": "models/20260428_152813/decoder.keras",
+    "history": "models/20260428_152813/history.csv",
+    "train_scores": "models/20260428_152813/train_scores.npy",
+    "train_predictions": "models/20260428_152813/train_predictions.npy"
+  }
+}

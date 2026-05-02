@@ -1,0 +1,40 @@
+{
+  "model_run_name": "20260428_164155",
+  "model_run_path": "models/isolation_forest/20260428_164155",
+  "evaluated_at_utc": "2026-04-28 08:42:05.900266+00:00",
+  "data_source": {
+    "source_data_run": "dataset/processed_windows/20260428_112816"
+  },
+  "threshold": 0.6414462013501058,
+  "training_metrics": {
+    "accuracy": 0.9689382403277319,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "tn": 71902,
+    "fp": 2305,
+    "fn": 0
+  },
+  "test_metrics": {
+    "accuracy": 0.9552714116708394,
+    "precision": 0.352847471127041,
+    "recall": 0.9991542148294333,
+    "f1": 0.5215215951732765,
+    "tp": 3544,
+    "tn": 135341,
+    "fp": 6500,
+    "fn": 3,
+    "roc_auc": 0.9834205232407344
+  },
+  "saved_plots": {
+    "score_distribution": "models/isolation_forest/20260428_164155/plots/isolation_forest_score_distribution.png",
+    "score_timeline": "models/isolation_forest/20260428_164155/plots/isolation_forest_timeline.png"
+  },
+  "counts": {
+    "n_test": 145388,
+    "n_actual_anomaly": 3547,
+    "n_predicted_anomaly": 10044,
+    "n_false_negative": 3
+  }
+}

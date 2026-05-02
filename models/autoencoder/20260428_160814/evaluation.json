@@ -1,0 +1,41 @@
+{
+  "model_run_name": "20260428_160814",
+  "model_run_path": "models/autoencoder/20260428_160814",
+  "model_type": "autoencoder",
+  "evaluated_at_utc": "2026-04-28 09:37:55.649698+00:00",
+  "data_source": {
+    "source_data_run": "dataset/processed_windows/20260428_112816"
+  },
+  "threshold": 20.570337956874216,
+  "training_metrics": {
+    "accuracy": 0.9652997695635183,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "tn": 71632,
+    "fp": 2575,
+    "fn": 0
+  },
+  "test_metrics": {
+    "accuracy": 0.9876949954604232,
+    "precision": 0.6674285714285715,
+    "recall": 0.9878770792218776,
+    "f1": 0.7966352165510969,
+    "tp": 3504,
+    "tn": 140095,
+    "fp": 1746,
+    "fn": 43,
+    "roc_auc": 0.997013591621381
+  },
+  "saved_plots": {
+    "reconstruction_error_distribution": "models/autoencoder/20260428_160814/plots/reconstruction_error_distribution.png",
+    "anomaly_timeline_with_fn_density": "models/autoencoder/20260428_160814/plots/anomaly_timeline_with_fn_density.png"
+  },
+  "counts": {
+    "n_test": 145388,
+    "n_actual_anomaly": 3547,
+    "n_predicted_anomaly": 5250,
+    "n_false_negative": 43
+  }
+}

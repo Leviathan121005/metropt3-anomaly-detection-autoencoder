@@ -1,0 +1,34 @@
+{
+  "run_id": "20260428_164155",
+  "source_data_run": "dataset/processed_windows/20260428_112816",
+  "model_type": "isolation_forest",
+  "model_config": {
+    "n_estimators": 300,
+    "max_samples": "auto",
+    "contamination": "auto",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "threshold_config": {
+    "method": "val_f1",
+    "percentile": 97.5,
+    "std_factor": 3.0
+  },
+  "threshold": 0.6414462013501058,
+  "train_samples": 74207,
+  "train_metrics": {
+    "accuracy": 0.9689382403277319,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "tn": 71902,
+    "fp": 2305,
+    "fn": 0
+  },
+  "saved_files": {
+    "model": "models/isolation_forest/20260428_164155/isolation_forest.pkl",
+    "train_scores": "models/isolation_forest/20260428_164155/train_scores.npy",
+    "train_predictions": "models/isolation_forest/20260428_164155/train_predictions.npy"
+  }
+}
