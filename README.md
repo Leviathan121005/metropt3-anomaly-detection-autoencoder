@@ -1,6 +1,6 @@
 # metropt3-anomaly-detection-autoencoder
 
-This project develops an anomaly detection system on the MetroPT3 air compressor dataset using a one-class autoencoder framework. The model is trained and evaluated on sequential windowed time series data, preserving the original class distribution without artificial rebalancing. The system learns normal operating behavior and identifies deviations as potential failures, achieving a strong F1 score of 0.888 under realistic evaluation settings.
+This project develops an anomaly detection system on the MetroPT3 air compressor dataset using a one-class autoencoder framework. The model is trained and evaluated on sequential windowed time series data, preserving the original class distribution **without artificial rebalancing**. The system learns normal operating behavior and identifies deviations as potential failures, achieving a strong F1 score of 0.888 under realistic evaluation settings.
 
 ---
 
@@ -12,7 +12,7 @@ MetroPT3 is an industrial sensor dataset collected from an air compressor system
 
 The data is highly imbalanced, with only **29,954 failure instances (~1.98%)** compared to over 1.48 million normal observations, making standard classification approaches difficult to apply reliably.
 
-A common solution is **class rebalancing**, but this alters the true data distribution and often leads to results that do not generalize well. Another approach is to modify the loss function (e.g., weighted BCE or focal loss), but these methods still depend on labeled anomalies.
+A common solution is class rebalancing, but this alters the true data distribution and often leads to results that do not generalize well. Another approach is to modify the loss function (e.g., weighted BCE or focal loss), but these methods still depend on labeled anomalies.
 
 In contrast, this project adopts an **unsupervised one-class learning** approach. By focusing on learning normal behavior rather than relying on labeled failures, the model can detect deviations even when anomalous data is scarce, incomplete, or not yet observed. This makes the approach more aligned with practical deployment settings.
 
@@ -20,7 +20,7 @@ In contrast, this project adopts an **unsupervised one-class learning** approach
 
 ## Windowing Strategy
 
-To incorporate temporal structure, the data is transformed into sliding windows. Each window has a size of **60 timesteps** with a **stride of 6**, corresponding to a 10-minute window with 1-minute intervals. A window is labeled as anomalous if the **last 10% of the window (6 datapoints)** contains anomalies. This design reduces false positives as a consistent presence of anomalous signals near the end of a window is required for it to be labeled as anomalous.
+To incorporate temporal structure, the data is transformed into sliding windows. Each window has a size of 60 timesteps with a stride of 6, corresponding to a 10-minute window with 1-minute intervals. A window is labeled as anomalous if the **last 10% of the window (6 datapoints)** contains anomalies. This design **reduces false positives** as a consistent presence of anomalous signals near the end of a window is required for it to be labeled as anomalous.
 
 ---
 
