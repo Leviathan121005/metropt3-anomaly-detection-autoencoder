@@ -65,12 +65,10 @@ Training uses Adam (1e-3 learning rate), batch size of 1024, and gradient clippi
 ![Autoencoder metrics val\_f1](models/comparison/plots/ae_metrics_val_f1.png)
 
 The autoencoder achieves strong performance, with results influenced by both architecture and threshold selection:
-- Conv1D models outperform dense variants, indicating that incorporating temporal structure within each window improves detection performance. 
+- Conv1D models generally outperform dense variants, indicating that capturing temporal structure within each window improves detection performance. 
 - Stochastic autoencoder models perform well under a fixed 97.5 training percentile threshold, suggesting they are more effective at separating normal and anomalous data by consistently assigning higher reconstruction errors to anomalies.
 - Using a validation set to tune the threshold (**val_f1**) yields almost perfect recall, but lacks precision.
-- A fixed percentile threshold is not robust, as performance differs noticeably between Conv1D models with and without stochastic sampling under this setting. In contrast, both models achieve similar performance under val_f1-tuned thresholds.
-
-**Note:** Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but with different thresholds for testing.
+- A fixed percentile threshold is not robust, as performance differs noticeably between Conv1D models with and without stochastic sampling under this setting. In contrast, both models achieve similar performance under val_f1-tuned thresholds. (**Note:** Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but with different thresholds for testing.)
 
 ### Isolation Forest metric comparison
 
@@ -84,9 +82,9 @@ Isolation Forest is included as an unsupervised one-class baseline and is applie
 
 This figure shows the reconstruction error distribution alongside the time series predictions, including normal and anomalous regions with their respective thresholds. From top to bottom, the plots correspond to:
 
-- Conv1D stochastic autoencoder, best model with p-train 97.5 percentile threshold (F1 0.888)
-- Conv1D deterministic autoencoder, best model with val_f1 threshold (F1 0.796)
-- Isolation forest baseline, with p-train (97.5 percentile) threshold (F1 0.796)
+- **Conv1D stochastic autoencoder**, best model with p-train 97.5 percentile threshold (F1 0.888)
+- **Conv1D deterministic autoencoder**, best model with val_f1 threshold (F1 0.796)
+- **Isolation forest baseline**, with p-train (97.5 percentile) threshold (F1 0.548)
 
 From the time series plots, lower precision is reflected in a higher number of false positives. The 97.5 training percentile threshold produces fewer false positives in this experiment, but it relies on the assumption that most anomalous behavior lies in the upper tail (97.5–100 percentile) of the training reconstruction error distribution, which may not hold in practice and can therefore be unreliable. In contrast, calibrating the threshold using a validation set is generally more robust, even if it leads to a higher number of false positives.
 
