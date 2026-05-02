@@ -70,7 +70,7 @@ The autoencoder achieves strong performance, with results influenced by both arc
 - Using a validation set to tune the threshold (**val_f1**) yields almost perfect recall, but lacks precision.
 - A fixed percentile threshold is not robust, as performance differs noticeably between Conv1D models with and without stochastic sampling under this setting. In contrast, both models achieve similar performance under val_f1-tuned thresholds.
 
-**Note:** Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but just with diffeerent threshold for testing.
+**Note:** Threshold selection is independent of model training. Hence, for the same model, they have the same reconstruction error distribution, but with different thresholds for testing.
 
 ### Isolation Forest metric comparison
 
