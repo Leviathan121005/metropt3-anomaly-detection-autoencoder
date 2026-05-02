@@ -138,4 +138,4 @@ Run the notebook to train and save models → `models/autoencoder/{timestamp}/`.
 
 ### Notes:
 - All outputs are timestamped to avoid overwrites.
-- `notebooks/train_models.ipynb` and `notebooks/evaluate_models.ipynb` refers to the latest processed window folder.
+- `notebooks/train_models.ipynb` and `notebooks/evaluate_models.ipynb` refer to the latest processed window folder.
