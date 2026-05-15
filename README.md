@@ -75,7 +75,7 @@ The autoencoder achieves strong performance, with results influenced by both arc
 
 Isolation Forest is included as an unsupervised one-class baseline and is applied on the same windowed data. It provides a fair reference as it does not rely on labeled anomalies and is widely used for anomaly detection. However, without explicitly modeling temporal structure, its performance remains below the Conv1D autoencoder models.
 
-### Best-model comparison
+### Model comparison
 
 ![Best model distribution and timeline](models/comparison/plots/best_models_ordered_rows.png)
 
